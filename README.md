@@ -61,7 +61,7 @@ SEC EDGAR (1994-2008 quarterly master indexes)
        (CIK→GVKEY→PERMNO, shrcd, prc, │
         BM, N_words ≥ 2000, …)        │
        ▼                                ▼
-[preclean.py]  WRDS pulls:        [step6] Build wide panel
+[preclean.py]  WRDS pulls:        [step6] Build a panel dataset
    - CRSP daily + FF factors            (event-window excret, size, turnover,
    - CRSP monthly                        FF3-α, IO from 13F, FF48 industry,
    - Compustat-CCM (book equity)         sentiment scores)
