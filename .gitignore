@@ -1,0 +1,157 @@
+# =============================================================================
+# .gitignore — Loughran & McDonald (2011) replication
+# =============================================================================
+# This is a public portfolio repo. NO raw 10-K filings, NO WRDS extracts,
+# NO licensed reference data, NO large intermediate artifacts are committed.
+# See DATA.md for what users must obtain locally.
+
+# -----------------------------------------------------------------------------
+# Python
+# -----------------------------------------------------------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# -----------------------------------------------------------------------------
+# Environments
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+env/
+ENV/
+
+# -----------------------------------------------------------------------------
+# Editors / IDEs
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*~
+~*
+*.stswp           # Stata editor swap files
+
+# -----------------------------------------------------------------------------
+# Local-only folders (not for portfolio sync)
+# -----------------------------------------------------------------------------
+# code/past/   = legacy Stata code + 10-Q extension scripts (local backup only)
+# docs/archive/= earlier exploratory write-ups (methodology trail; local only)
+code/past/
+docs/archive/
+
+# -----------------------------------------------------------------------------
+# OS
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -----------------------------------------------------------------------------
+# Input data (WRDS / SRAF / Ken French / EDGAR raw) — NEVER committed
+# Users build these locally; see input/README.md and DATA.md.
+# -----------------------------------------------------------------------------
+input/*.dta
+input/*.dta.stata_backup
+input/*.csv
+input/*.xlsx
+input/*.zip
+input/*.gz
+input/*.parquet
+input/MasterIndex_*/
+# Ken French's SIC mapping — users fetch from his data library (see DATA.md)
+input/Siccodes48.txt
+!input/README.md
+
+# -----------------------------------------------------------------------------
+# Raw filing corpus (lives outside the repo at D:\Data\10_K_10_Q\ by default;
+# set DATA_ROOT in scripts to override). Typical size: tens to hundreds of GB.
+# -----------------------------------------------------------------------------
+data/
+raw/
+processed/
+filings/
+raw_filings/
+sec_filings/
+10k_filings/
+
+# -----------------------------------------------------------------------------
+# Output — intermediate panels & sparse matrices (regenerable from code)
+# -----------------------------------------------------------------------------
+output/panel.parquet
+output/panel_*.parquet
+output/sample.parquet
+output/filing_word_counts.parquet
+output/filing_to_gvkey_permno.parquet
+output/filing_index.parquet
+output/filing_negword_tf.npz
+output/filing_mdna_negword_tf.npz
+output/neg_word_columns.parquet
+output/val_2007_size_check.csv
+
+# Raw 10-K text spot-check samples (large, regenerable from step4a_mdna_sample.py)
+output/mda_samples/
+output/mda_samples/**
+
+# Exploratory variants (the canonical tables are kept; these are diagnostic runs)
+output/table1_sample_funnel_default.csv
+output/table1_sample_funnel_default_baseline.csv
+output/table1_sample_funnel_dict_pos_only.csv
+output/table1_sample_funnel_final.csv
+output/table1_sample_funnel_final_v2.csv
+output/table1_sample_funnel_link_with_comphist.csv
+output/table1_sample_funnel_shrcd_*.csv
+output/table4_sic_*.csv
+output/table5_sic_*.csv
+
+# Output: KEPT (committed)
+#   output/table1_sample_funnel.csv
+#   output/table2.csv
+#   output/table4_cols2_4.csv
+#   output/table5_cols2_4.csv
+#   output/replication_diagnostic.md
+#   output/variant_grid_results.csv
+
+# -----------------------------------------------------------------------------
+# Temp / logs / scratch
+# -----------------------------------------------------------------------------
+temp/
+*.log
+*.tmp
+
+# -----------------------------------------------------------------------------
+# Docs — exclude all PDFs (copyrighted journal articles + SRAF docs).
+# DATA.md links to the publishers / SRAF site instead.
+# -----------------------------------------------------------------------------
+docs/*.pdf
+
+# -----------------------------------------------------------------------------
+# Personal notes
+# -----------------------------------------------------------------------------
+Notes.docx
+NOTES.md
+notes.md
+
+# -----------------------------------------------------------------------------
+# Credentials / secrets — defense in depth (should never exist anyway)
+# -----------------------------------------------------------------------------
+*.key
+*.pem
+*.crt
+credentials.json
+secrets.json
+config.private.*
+pgpass.conf
+.pgpass

@@ -1,0 +1,23 @@
+# Python dependencies for the LM (2011) replication.
+# Tested with Python 3.10 (Anaconda env `py310`).
+
+# Core data
+pandas>=2.0
+numpy>=1.24
+pyarrow>=12.0          # parquet I/O
+
+# Scientific
+scipy>=1.10            # sparse matrices, stats
+statsmodels>=0.14      # WLS, OLS, HAC standard errors
+
+# WRDS Python client (CRSP, Compustat, 13F via PostgreSQL backend)
+# Used by code/preclean.py only. Requires a WRDS account.
+wrds>=3.2
+
+# SEC EDGAR client
+requests>=2.30
+tenacity>=8.0          # retry with exponential backoff
+
+# Progress + utilities
+tqdm>=4.65
+python-dateutil>=2.8
