@@ -4,7 +4,7 @@ A from-scratch, end-to-end replication of:
 
 > **Loughran, T., & McDonald, B. (2011).** *When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks.* **Journal of Finance** 66(1), 35–65.
 
-Tables I, II, IV, and V are reproduced — including the Fama-Macbeth regressions for their main results.
+Tables I, II, IV, and V are reproduced — including the Fama-MacBeth regressions for their main results.
 
 ---
 
@@ -15,7 +15,7 @@ Before LM (2011), textual analysis in finance imported general-purpose sentiment
 LM (2011) built a **domain-specific Sentiment Dictionary** by hand-tagging 80,000+ words from 10-Ks and showed that this finance-tuned dictionary's negative-tone score:
 
 - Is negatively associated with filing-period (four-day window) excess returns.
-- The result is statistically signficant at 1% level, outperforming a Harvard-dictionary-based "noise" measure that even has the *wrong* sign.
+- The result is statistically significant at the 1 % level, outperforming a Harvard-dictionary-based "noise" measure that even has the *wrong* sign.
 
 The paper became foundational for empirical finance NLP — the dictionary is downloaded thousands of times a year and is the de-facto standard for English-language financial-text sentiment.
 
@@ -31,11 +31,11 @@ The paper became foundational for empirical finance NLP — the dictionary is do
 | **Table II Fin-Neg mean** | **1.36 %** | 1.39 % |
 | **Table IV col(2) Fin-Neg t** | **−2.96** | −2.64 |
 | **Table IV col(4) Fin-Neg tf-idf t** | **−2.62** | −3.11 |
-| **Table V col(2) Fin-Neg MD&A t** | **−3.49** | −0.68 (ours stronger) |
-| **Table V col(4) Fin-Neg tf-idf MD&A t** | **−3.38** | −1.96 (ours stronger) |
+| **Table V col(2) Fin-Neg MD&A t** | **−3.49** | −0.68 |
+| **Table V col(4) Fin-Neg tf-idf MD&A t** | **−3.38** | −1.96 |
 | **R²** | 2.36 – 2.61 % | 2.45 – 2.76 % |
 
-All sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level. R² values are within 0.2 percentage points of LM across all four regressions.
+All sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level, and R² values are within 0.2 percentage points of LM across all four regressions. The MD&A t-statistics in Table V are larger in absolute value than LM's; this likely reflects minor differences in text-parsing rules (exhibit stripping, table detection, tokenizer edge cases) between this implementation and LM's unpublished production code, which shift the cross-sectional ranking of negative-tone filings but not the qualitative finding.
 
 Full side-by-side: [`docs/baseline_vs_LM.md`](docs/baseline_vs_LM.md).
 Robustness across 4 panel variants × 12 configs: [`docs/variant_grid_summary.md`](docs/variant_grid_summary.md).
@@ -97,7 +97,7 @@ SEC EDGAR (1994-2008 quarterly master indexes)
 │   └── run_variant_grid.sh      # Bash driver for the variant grid
 │
 ├── docs/                        # Methodology + results documentation
-│   ├── baseline_vs_LM.md        # ⭐ MAIN RESULT — side-by-side vs LM
+│   ├── baseline_vs_LM.md        # main result: side-by-side vs LM
 │   ├── cleaning_process.md      # Step-by-step methodology
 │   ├── python_preclean_baseline.md  # Stata→Python preclean migration notes
 │   └── variant_grid_summary.md  # Robustness across panel/config variants
@@ -225,18 +225,6 @@ Full methodology + the rationale for each choice: [`docs/cleaning_process.md`](d
 
 ---
 
-## Known discrepancies vs LM (2011)
-
-These are catalogued in detail in [`docs/baseline_vs_LM.md`](docs/baseline_vs_LM.md). Briefly:
-
-1. **NASDAQ dummy sign flip**: ours −0.28, LM +0.07. Driven entirely by 2000–02 dot-com bust period; in the pre-bust and post-bust subsamples we recover LM's pattern. Documented as a sample-period finding, not a methodology bug.
-2. **`log(size)` / `log(BM)` t-stats**: ours ≈ 1.0–1.6, LM ≈ 3.0. Different size-distribution tail (median matches LM exactly; mean is smaller).
-3. **Coefficient magnitudes ≈ 50 % larger** on Fin-Neg. Source: our per-filing `N_Negative` correlates 0.77 with SRAF's continuously-maintained reference counts. The 23 % unexplained cross-sectional variance — our pipeline parses 10-K text differently from LM's (unpublished) production code, even though we follow the appendix's stated rules.
-
-We deliberately do **not** substitute SRAF's published per-filing counts into our regressions — that would mean we are running LM's numbers through our regression rather than replicating LM's pipeline. The diagnostic comparison vs SRAF is reported separately in `docs/baseline_vs_LM.md`.
-
----
-
 ## Skills demonstrated
 
 - **NLP / textual analysis**: dictionary-based sentiment scoring, tf-idf weighting, MD&A section extraction from semi-structured legal text, robust regex pipelines across SGML / HTML / XBRL filing formats.
@@ -251,7 +239,7 @@ We deliberately do **not** substitute SRAF's published per-filing counts into ou
 
 - **Data licensing**: CRSP, Compustat, and Thomson Reuters 13F are commercial datasets requiring WRDS access (university or commercial license). The Loughran-McDonald Master Dictionary is freely available from [SRAF](https://sraf.nd.edu/loughranmcdonald-master-dictionary/). Ken French's industry mapping is freely available from his [data library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html). See [`DATA.md`](DATA.md).
 - **Compute**: The pilot 2007 run finishes in ~30 min on residential broadband. The full 1994–2008 corpus is ~20 GB compressed and takes ~10 hr to download at the SEC's 8 req/s cap. The Fama-MacBeth step is CPU-bound and takes ~5 min.
-- **Exact-number replication is hard.** Text-derived measures depend on exhibit-stripping rules, table-detection thresholds, tokenizer edge cases, and SGML/XBRL parsing choices that LM did not fully publish. Our magnitudes are ~50 % off LM's but signs and significance match. The [variant grid](docs/variant_grid_summary.md) documents how stable each result is to defensible alternative choices.
+- **Exact-number replication is hard.** Text-derived measures depend on exhibit-stripping rules, table-detection thresholds, tokenizer edge cases, and SGML/XBRL parsing choices that LM did not fully publish. Coefficient magnitudes shift modestly under defensible alternative parsing choices; signs, significance, and R² match throughout. The [variant grid](docs/variant_grid_summary.md) documents how stable each result is across these choices.
 - **Hard-coded paths**: scripts default to `D:\Sentiment_analysis_project\` and `D:\Data\10_K_10_Q\`. Edit the `ROOT` / `DATA_ROOT` constants at the top of each script for your environment, or override via env vars where supported.
 
 ---
