@@ -10,7 +10,7 @@ Tables I, II, IV, and V are reproduced — including the Fama-MacBeth regression
 
 ## Why this paper matters
 
-Before LM (2011), textual analysis in finance imported general-purpose sentiment dictionaries (e.g. Harvard's *General Inquirer*) and counted words. The problem: those dictionaries flag words like *liability*, *vice*, *cost*, *expense*, *tax* as **negative**. In 10-K filings these are mostly accounting terms with no negative connotation, so the resulting "negativity" score is noise.
+Before LM (2011), textual analysis in finance imported general-purpose sentiment dictionaries (e.g. Harvard's *General Inquirer*, specifically the IV-4 Psychosocial Dictionary) and counted words. The problem: those dictionaries flag words like *liability*, *vice*, *cost*, *expense*, *tax* as **negative**. In 10-K filings these are mostly accounting terms with no negative connotation, so the resulting "negativity" score is noise.
 
 LM (2011) built a **domain-specific Sentiment Dictionary** by hand-tagging 80,000+ words from 10-Ks and showed that this finance-tuned dictionary's negative-tone score:
 
