@@ -19,8 +19,6 @@ LM (2011) built a **domain-specific Sentiment Dictionary** by hand-tagging 80,00
 
 The paper became foundational for empirical finance NLP — the dictionary is downloaded thousands of times a year and is the de-facto standard for English-language financial-text sentiment.
 
-**What replicating it teaches**: how to assemble an SEC EDGAR corpus at scale, write a fault-tolerant downloader respecting fair-access rate limits, parse messy pre-XBRL HTML/SGML, tokenize the text, run a Fama-MacBeth pipeline with HAC standard errors, and reason carefully about why your numbers differ from the published ones (because they will).
-
 ---
 
 ## Replication snapshot
@@ -235,11 +233,10 @@ Full methodology + the rationale for each choice: [`docs/cleaning_process.md`](d
 
 ---
 
-## Limitations / reproducibility notes
+## Reproducibility notes
 
 - **Data licensing**: CRSP, Compustat, and Thomson Reuters 13F are commercial datasets requiring WRDS access (university or commercial license). The Loughran-McDonald Master Dictionary is freely available from [SRAF](https://sraf.nd.edu/loughranmcdonald-master-dictionary/). Ken French's industry mapping is freely available from his [data library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html). See [`DATA.md`](DATA.md).
 - **Compute**: The pilot 2007 run finishes in ~30 min on residential broadband. The full 1994–2008 corpus is ~20 GB compressed and takes ~10 hr to download at the SEC's 8 req/s cap. The Fama-MacBeth step is CPU-bound and takes ~5 min.
-- **Exact-number replication is hard.** Text-derived measures depend on exhibit-stripping rules, table-detection thresholds, tokenizer edge cases, and SGML/XBRL parsing choices that LM did not fully publish. Coefficient magnitudes shift modestly under defensible alternative parsing choices; signs, significance, and R² match throughout. The [variant grid](docs/variant_grid_summary.md) documents how stable each result is across these choices.
 - **Hard-coded paths**: scripts default to `D:\Sentiment_analysis_project\` and `D:\Data\10_K_10_Q\`. Edit the `ROOT` / `DATA_ROOT` constants at the top of each script for your environment, or override via env vars where supported.
 
 ---
