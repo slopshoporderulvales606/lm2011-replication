@@ -4,7 +4,7 @@ A from-scratch, end-to-end replication of:
 
 > **Loughran, T., & McDonald, B. (2011).** *When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks.* **Journal of Finance** 66(1), 35–65.
 
-Tables I, II, IV, and V are reproduced — including the headline four-day filing-period excess-return regressions of cumulative returns on a finance-tuned negative-tone dictionary, in proportional and tf-idf-weighted forms.
+Tables I, II, IV, and V are reproduced — including the Fama-Macbeth regressions for their main results.
 
 ---
 
@@ -12,15 +12,14 @@ Tables I, II, IV, and V are reproduced — including the headline four-day filin
 
 Before LM (2011), textual analysis in finance imported general-purpose sentiment dictionaries (e.g. Harvard's *General Inquirer*) and counted words. The problem: those dictionaries flag words like *liability*, *vice*, *cost*, *expense*, *tax* as **negative**. In 10-K filings these are mostly accounting terms with no negative connotation, so the resulting "negativity" score is noise.
 
-LM (2011) built a **domain-specific Master Dictionary** by hand-tagging 80,000+ words from 10-Ks and showed that this finance-tuned dictionary's negative-tone score:
+LM (2011) built a **domain-specific Sentiment Dictionary** by hand-tagging 80,000+ words from 10-Ks and showed that this finance-tuned dictionary's negative-tone score:
 
-- Has the correct sign and is statistically significant in cross-sectional regressions of four-day filing-period excess returns.
-- Survives controls for size, book-to-market, turnover, prior alpha, institutional ownership, NASDAQ listing, and FF48 industry dummies.
-- Outperforms a Harvard-dictionary-based "noise" measure that even has the *wrong* sign.
+- Is negatively associated with filing-period (four-day window) excess returns.
+- The result is statistically signficant at 1% level, outperforming a Harvard-dictionary-based "noise" measure that even has the *wrong* sign.
 
 The paper became foundational for empirical finance NLP — the dictionary is downloaded thousands of times a year and is the de-facto standard for English-language financial-text sentiment.
 
-**What replicating it teaches**: how to assemble an SEC EDGAR corpus at scale, write a fault-tolerant downloader respecting fair-access rate limits, parse messy pre-XBRL HTML/SGML, tokenize per a published appendix, run a Fama-MacBeth pipeline with HAC standard errors, and reason carefully about why your numbers differ from the published ones (because they will).
+**What replicating it teaches**: how to assemble an SEC EDGAR corpus at scale, write a fault-tolerant downloader respecting fair-access rate limits, parse messy pre-XBRL HTML/SGML, tokenize the text, run a Fama-MacBeth pipeline with HAC standard errors, and reason carefully about why your numbers differ from the published ones (because they will).
 
 ---
 
