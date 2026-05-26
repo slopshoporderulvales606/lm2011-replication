@@ -67,11 +67,8 @@ SEC EDGAR (1994-2008 quarterly master indexes)
    - Compustat-CCM (book equity)         sentiment scores)
    - Thomson Reuters 13F
        │                                ▼
-       └──────────► input/*.dta ───►  [step7] Fama-MacBeth quarterly
-                                          (60 quarterly cross-sections,
-                                           n-weighted time-series avg,
-                                           Newey-West HAC SE, FF48 FEs)
-                                          → Tables II, IV, V
+       └──────────► input/*.dta ───►  [step7] Descriptive Statistics (Tables II) and Fama-MacBeth regressions (IV, V)
+
 ```
 
 ---
