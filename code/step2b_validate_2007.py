@@ -10,7 +10,7 @@ Validation passes:
 
 Outputs:
   - Prints a console report.
-  - Writes CSVs of mismatches/outliers to D:\\Sentiment_analysis_project\\output\\.
+  - Writes CSVs of mismatches/outliers to D:\\lm2011-replication\\output\\.
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(r"D:\Sentiment_analysis_project")
+ROOT = Path(r"D:\lm2011-replication")
 DATA_ROOT = Path(r"D:\Data\10_K_10_Q")
 INP = ROOT / "input"
 OUT = ROOT / "output"

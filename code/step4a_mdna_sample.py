@@ -23,7 +23,7 @@ from mdna_extract import (  # noqa: E402
     clean_text, extract_mdna, read_filing, tokenize,
 )
 
-ROOT = Path(r"D:\Sentiment_analysis_project")
+ROOT = Path(r"D:\lm2011-replication")
 DATA_ROOT = Path(r"D:\Data\10_K_10_Q")
 OUT = ROOT / "output" / "mda_samples"
 OUT.mkdir(parents=True, exist_ok=True)

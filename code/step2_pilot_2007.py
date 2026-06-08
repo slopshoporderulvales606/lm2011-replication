@@ -25,7 +25,7 @@ from tqdm import tqdm
 sys.path.insert(0, str(Path(__file__).parent))
 from edgar_client import get  # noqa: E402
 
-ROOT = Path(r"D:\Sentiment_analysis_project")
+ROOT = Path(r"D:\lm2011-replication")
 DATA_ROOT = Path(r"D:\Data\10_K_10_Q")
 MAN = DATA_ROOT / "manifest" / "filings_10k_1994_2008.parquet"
 RAW = DATA_ROOT / "raw"

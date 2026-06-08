@@ -234,7 +234,7 @@ Full methodology + the rationale for each choice: [`docs/cleaning_process.md`](d
 
 - **Data licensing**: CRSP, Compustat, and Thomson Reuters 13F are commercial datasets requiring WRDS access (university or commercial license). The Loughran-McDonald Master Dictionary is freely available from [SRAF](https://sraf.nd.edu/loughranmcdonald-master-dictionary/). Ken French's industry mapping is freely available from his [data library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html). See [`DATA.md`](DATA.md).
 - **Compute**: The pilot 2007 run finishes in ~30 min on residential broadband. The full 1994–2008 corpus is ~20 GB compressed and takes ~10 hr to download at the SEC's 8 req/s cap. The Fama-MacBeth step is CPU-bound and takes ~5 min.
-- **Hard-coded paths**: scripts default to `D:\Sentiment_analysis_project\` and `D:\Data\10_K_10_Q\`. Edit the `ROOT` / `DATA_ROOT` constants at the top of each script for your environment, or override via env vars where supported.
+- **Hard-coded paths**: scripts default to `D:\lm2011-replication\` and `D:\Data\10_K_10_Q\`. Edit the `ROOT` / `DATA_ROOT` constants at the top of each script for your environment, or override via env vars where supported.
 
 ---
 

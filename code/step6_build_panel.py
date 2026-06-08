@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import load_npz, csr_matrix
 
-ROOT = Path(r"D:\Sentiment_analysis_project")
+ROOT = Path(r"D:\lm2011-replication")
 DATA_ROOT = Path(r"D:\Data\10_K_10_Q")
 INP = ROOT / "input"
 OUT = ROOT / "output"

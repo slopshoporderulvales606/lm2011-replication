@@ -27,7 +27,7 @@ from scipy.stats import norm
 
 warnings.filterwarnings("ignore")
 
-ROOT = Path(r"D:\Sentiment_analysis_project")
+ROOT = Path(r"D:\lm2011-replication")
 OUT = ROOT / "output"
 PANEL_DEFAULT = OUT / "panel.parquet"
 

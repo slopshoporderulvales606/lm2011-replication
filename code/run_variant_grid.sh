@@ -8,7 +8,7 @@
 
 set -e
 PY=/c/Users/Hank_desktop/anaconda3/envs/py310/python.exe
-ROOT=/d/Sentiment_analysis_project
+ROOT=/d/lm2011-replication
 cd "$ROOT"
 
 echo "############################################################"

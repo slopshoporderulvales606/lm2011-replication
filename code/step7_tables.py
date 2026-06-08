@@ -31,7 +31,7 @@ import statsmodels.api as sm
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 warnings.filterwarnings("ignore", category=UserWarning, module="statsmodels")
 
-ROOT = Path(r"D:\Sentiment_analysis_project")
+ROOT = Path(r"D:\lm2011-replication")
 OUT = ROOT / "output"
 PANEL = OUT / "panel.parquet"
 

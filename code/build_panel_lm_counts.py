@@ -15,7 +15,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-ROOT = Path(r"D:\Sentiment_analysis_project")
+ROOT = Path(r"D:\lm2011-replication")
 INP = ROOT / "input"
 OUT = ROOT / "output"
 
