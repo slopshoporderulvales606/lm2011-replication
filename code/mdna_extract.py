@@ -38,6 +38,16 @@ BIN_BLOCK_RE = re.compile(
 # Encoded uuencode/base64 streams (older filings embed images this way).
 UU_RE = re.compile(r"begin\s+\d{3}\s+\S+\n.*?\nend\s*\n", re.DOTALL)
 
+# Inline-XBRL hidden-fact blocks: <ix:hidden>...</ix:hidden> wraps content tagged
+# for machine readers but NOT rendered to humans. The content inside is often
+# numeric (durations, CIK numbers, GAAP URIs — harmless), but in early-adopter
+# filings (2019-2022) can include duplicated narrative prose that would inflate
+# N_Words / N_Negative if it survived into the token stream. Strip these blocks
+# entirely before the general tag strip. (Pre-2009 filings have no inline XBRL,
+# so this is a no-op on the LM in-sample window.)
+IX_HIDDEN_RE = re.compile(r"<ix:hidden\b[^>]*>.*?</ix:hidden>",
+                          re.IGNORECASE | re.DOTALL)
+
 # Strip ALL remaining tags (HTML / SGML / inline XBRL like <ix:…>).
 TAG_RE = re.compile(r"<[^>]+>")
 
@@ -119,7 +129,11 @@ def clean_text(raw: str) -> str:
     body = BIN_BLOCK_RE.sub(" ", body)
     body = UU_RE.sub(" ", body)
 
-    # 3. Decode HTML entities BEFORE table-filtering and tag-stripping.
+    # 3. Strip inline-XBRL hidden-fact blocks BEFORE entity decoding & tag strip.
+    #    These wrap content tagged for machines but not rendered to humans.
+    body = IX_HIDDEN_RE.sub(" ", body)
+
+    # 4. Decode HTML entities BEFORE table-filtering and tag-stripping.
     body = html.unescape(body)
 
     # 4. Remove numeric-heavy tables. Iterate so we don't accidentally
