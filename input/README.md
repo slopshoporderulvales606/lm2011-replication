@@ -50,7 +50,7 @@ From <https://sraf.nd.edu/sec-edgar-data/>:
 | `LoughranMcDonald_10-K_HeaderData_1993-2025.csv` | 10-K filer header metadata | Optional |
 | `Loughran-McDonald_EDGAR_MasterIndexAnalysis_1993-2024.xlsx` | Filing tabulations | Reference only |
 | `Documentation_LoughranMcDonald_MasterDictionary.pdf` | Dictionary documentation | Reference |
-| `MasterIndex_20260318/` | SRAF-mirrored EDGAR master index files (`.idx`) | Reference; we re-download from EDGAR directly in step 1 |
+| `MasterIndex_20260318/` | SRAF-mirrored EDGAR master index files (`.idx`) | Reference; I re-download from EDGAR directly in step 1 |
 
 ---
 

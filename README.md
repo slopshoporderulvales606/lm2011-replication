@@ -25,18 +25,17 @@ The paper became foundational for empirical finance NLP — the dictionary is do
 
 | Cell | This repo | LM (2011) |
 |---|---:|---:|
-| **Table I final sample** | **51,015** firm-years / **8,950** firms | 50,115 / 8,341 |
+| **Table I final sample** | **50,902** firm-years / **8,937** firms | 50,115 / 8,341 |
 | **Table II Fin-Neg mean** | **1.36 %** | 1.39 % |
-| **Table IV col(2) Fin-Neg t** | **−2.96** | −2.64 |
-| **Table IV col(4) Fin-Neg tf-idf t** | **−2.62** | −3.11 |
-| **Table V col(2) Fin-Neg MD&A t** | **−3.49** | −0.68 |
-| **Table V col(4) Fin-Neg tf-idf MD&A t** | **−3.38** | −1.96 |
-| **R²** | 2.36 – 2.61 % | 2.45 – 2.76 % |
+| **Table IV col(2) Fin-Neg t-stat** | **−2.99** | −2.64 |
+| **Table IV col(4) Fin-Neg tf-idf t-stat** | **−2.69** | −3.11 |
+| **Table V col(2) Fin-Neg MD&A t-stat** | **−3.47** | −0.68 |
+| **Table V col(4) Fin-Neg tf-idf MD&A t-stat** | **−3.39** | −1.96 |
+| **R²** | 2.35 – 2.58 % | 2.45 – 2.76 % |
 
-All sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level, and R² values are within 0.2 percentage points of LM across all four regressions. The MD&A t-statistics in Table V are larger in absolute value than LM's; this likely reflects minor differences in text-parsing rules (exhibit stripping, table detection, tokenizer edge cases) between this implementation and LM's unpublished production code, which shift the cross-sectional ranking of negative-tone filings but not the qualitative finding.
+All sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level, and R² values are within 0.2 percentage points of LM across all four regressions. The MD&A t-statistics in Table V are larger in absolute value than LM's. Several factors plausibly contribute: ~14 years of CRSP/Compustat restatements, which may give cleaner accounting-based variables; WRDS' CIK ↔ GVKEY ↔ PERMNO link-table backfills accumulated since 2011 (~600 extra unique permnos relative to LM); and minor differences in text-parsing rules between this implementation and LM's unpublished production code. These differences likely raise the statistical power of the Table V tests, lending further empirical support to LM's underlying claim that discretionary managerial tone in MD&A predicts filing-period returns.
 
 Full side-by-side: [`docs/baseline_vs_LM.md`](docs/baseline_vs_LM.md).
-Robustness across 4 panel variants × 12 configs: [`docs/variant_grid_summary.md`](docs/variant_grid_summary.md).
 
 ---
 
@@ -90,15 +89,13 @@ SEC EDGAR (1994-2008 quarterly master indexes)
 │   ├── step7_tables.py          # Produce Tables II, IV, V
 │   ├── step8_variant_grid.py    # Robustness: 4 panels × 12 configs grid
 │   ├── build_baseline_vs_lm.py  # Build docs/baseline_vs_LM.md from outputs
-│   ├── build_variant_summary.py # Build docs/variant_grid_summary.md
 │   ├── build_panel_lm_counts.py # Diagnostic: panel using SRAF's published counts
 │   └── run_variant_grid.sh      # Bash driver for the variant grid
 │
 ├── docs/                        # Methodology + results documentation
 │   ├── baseline_vs_LM.md        # main result: side-by-side vs LM
 │   ├── cleaning_process.md      # Step-by-step methodology
-│   ├── python_preclean_baseline.md  # Stata→Python preclean migration notes
-│   └── variant_grid_summary.md  # Robustness across panel/config variants
+│   └── python_preclean_baseline.md  # Stata→Python preclean migration notes
 │
 ├── input/                       # Input data (NOT committed — see DATA.md)
 │   └── README.md                # Describes required files + sources

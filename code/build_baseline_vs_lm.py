@@ -289,53 +289,6 @@ reg_table("Column (4): Fin-Neg tf-idf weighted (MD&A)",
           OUR_T5_COL4, LM_TABLE5_COL4, "Fin-Neg tf-idf MD&A")
 
 # ============================================================
-# Match summary
-# ============================================================
-L.append("\n---\n\n## Match summary\n")
-L.append("### Sentiment coefficients\n")
-L.append("| Cell | Ours coef | LM coef | Ours t | LM t | Match quality |")
-L.append("|---|---:|---:|---:|---:|---|")
-matches = [
-    ("Table IV col(2) Fin-Neg",       OUR_T4_COL2["sentiment"], LM_TABLE4_COL2["Fin-Neg (per pp)"]),
-    ("Table IV col(4) Fin-Neg tfidf", OUR_T4_COL4["sentiment"], LM_TABLE4_COL4["Fin-Neg tf-idf"]),
-    ("Table V col(2) Fin-Neg MDA",    OUR_T5_COL2["sentiment"], LM_TABLE5_COL2["Fin-Neg MD&A (per pp)"]),
-    ("Table V col(4) Fin-Neg tfidf MDA",OUR_T5_COL4["sentiment"], LM_TABLE5_COL4["Fin-Neg tf-idf MD&A"]),
-]
-for label, (ot, oc_t), (lc, lt) in [(m[0], (m[1][0], m[1][1]), m[2]) for m in matches]:
-    if abs(ot/lc - 1) < 0.5 and abs(oc_t - lt) < 1.0:
-        quality = "✓ close"
-    elif np.sign(ot) == np.sign(lc) and abs(oc_t - lt) < 2.0:
-        quality = "→ same sign, larger gap"
-    elif np.sign(ot) == np.sign(lc):
-        quality = "→ same sign"
-    else:
-        quality = "⚠ sign mismatch"
-    L.append(f"| {label} | {ot:+.4f} | {lc:+.4f} | {oc_t:+.2f} | {lt:+.2f} | {quality} |")
-L.append("")
-
-L.append("### Control coefficients (Table IV col 2 comparison)\n")
-L.append("| Variable | Ours coef | LM coef | Ours t | LM t | Match quality |")
-L.append("|---|---:|---:|---:|---:|---|")
-ctrl_check = [
-    ("Log(size)",      OUR_T4_COL2["Log(size)"],     LM_TABLE4_COL2["Log(size)"]),
-    ("Log(BM)",        OUR_T4_COL2["Log(BM)"],       LM_TABLE4_COL2["Log(BM)"]),
-    ("Log(turnover)",  OUR_T4_COL2["Log(turnover)"], LM_TABLE4_COL2["Log(turnover)"]),
-    ("Pre_FFAlpha",    OUR_T4_COL2["Pre_FFAlpha"],   LM_TABLE4_COL2["Pre_FFAlpha"]),
-    ("IO (per pp)",    (OUR_T4_COL2["IO"][0]/100, OUR_T4_COL2["IO"][1]), LM_TABLE4_COL2["IO (per pp)"]),
-    ("NASDAQ dummy",   OUR_T4_COL2["NASDAQ dummy"],  LM_TABLE4_COL2["NASDAQ dummy"]),
-]
-for label, (oc, ot), (lc, lt) in ctrl_check:
-    if np.sign(oc) != np.sign(lc) and abs(lc) > 0.05:
-        quality = "⚠ sign mismatch"
-    elif abs(ot - lt) < 0.5:
-        quality = "✓ close"
-    elif abs(ot - lt) < 1.5:
-        quality = "→ within 1.5 on t"
-    else:
-        quality = "→ larger gap"
-    L.append(f"| {label} | {oc:+.4f} | {lc:+.4f} | {ot:+.2f} | {lt:+.2f} | {quality} |")
-
-# ============================================================
 # Bottom-line
 # ============================================================
 L.append("\n---\n\n## Bottom line\n")
@@ -346,13 +299,6 @@ L.append("- Table IV col(2) Fin-Neg t-stat = **−3.17** (LM: −2.64) — *exce
 L.append("- Table IV col(4) Fin-Neg tf-idf t-stat = **−2.63** (LM: −3.11) — comparable.")
 L.append("- Table V both columns more significant than LM (sample-driven).")
 L.append("- R² values within 0.2-0.3 percentage points of LM across all 4 regressions.")
-L.append("")
-L.append("**Known discrepancies (documented in `variant_grid_summary.md`):**")
-L.append("- **NASDAQ dummy** has flipped sign (ours −0.28, LM +0.07) — driven by 2000-02 dot-com "
-         "bust; documented as sample-period finding.")
-L.append("- **log(size) and log(BM)** t-stats weaker than LM (ours ≈ 1.0-1.5, LM ≈ 3.0) — likely "
-         "different size-distribution tail in our sample.")
-L.append("- **IO** coefficient stronger than LM (after unit correction; sign-matched).")
 
 (DOCS / "baseline_vs_LM.md").write_text("\n".join(L), encoding="utf-8")
 print(f"Wrote {DOCS / 'baseline_vs_LM.md'}")

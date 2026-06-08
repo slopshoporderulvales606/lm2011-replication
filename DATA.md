@@ -88,7 +88,7 @@ Available from <https://sraf.nd.edu/sec-edgar-data/>:
 | `Loughran-McDonald_EDGAR_MasterIndexAnalysis_1993-2024.xlsx` | Filing tabulations (reference) |
 | Documentation PDF for the Master Dictionary | Reference (link from the SRAF site) |
 
-The Master Dictionary is the canonical Loughran-McDonald list of ~86,553 words with per-word `Negative / Positive / Uncertainty / Litigious / StrongModal / WeakModal / Constraining` flags. Our `N_Negative` counts tokens whose `Negative ≠ 0` (the integer is the year of inclusion).
+The Master Dictionary is the canonical Loughran-McDonald list of ~86,553 words with per-word `Negative / Positive / Uncertainty / Litigious / StrongModal / WeakModal / Constraining` flags. My `N_Negative` counts tokens whose `Negative ≠ 0` (the integer is the year of inclusion).
 
 ---
 

@@ -18,7 +18,7 @@ Appendix) where relevant.
    (drop 10-KSB family and all amendments).
 3. Deduplicate by (cik, accession) — each unique accession is downloaded once;
    co-filer mirrors point at byte-identical files on EDGAR.
-4. Result: 157,293 unique 10-K-family accessions in our broad manifest;
+4. Result: 157,293 unique 10-K-family accessions in my broad manifest;
    **117,021** unique 10-K + 10-K405 accessions for the LM-style sample.
 
 ---
@@ -158,7 +158,7 @@ the tightest "ordinary common equity" definition.
 SEC CIK numbers to the CRSP PERMNOs." WRDS does not ship a direct CIK ↔ PERMNO
 file; the equivalent is the WRDS SEC Suite, which is embedded in Compustat as
 the `cik` column on each `(gvkey, fyear)` row paired with `permno` (the CCM
-link). That table is `compustat_gvkey_permno.dta` in our preclean output.
+link). That table is `compustat_gvkey_permno.dta` in my preclean output.
 
 **Chosen link mode** (`compustat_only`): for each filing, look up the
 Compustat row whose `cik` matches and whose `fyear` is closest to
@@ -170,7 +170,7 @@ Compustat row whose `cik` matches and whose `fyear` is closest to
 
 The alternative `compustat_with_comphist` mode (Compustat primary, then
 `comphist_cik_gvkey.dta` as point-in-time fallback) yields ~74,200 matches
-but adds ~300 firms with weak time validation. We chose `compustat_only` for
+but adds ~300 firms with weak time validation. I chose `compustat_only` for
 the cleaner LM-aligned spec.
 
 ---
@@ -185,7 +185,7 @@ SIC source is controlled by env var `FF48_SIC_SOURCE` with three options:
 2. `sich`: Compustat historical SIC at `(gvkey, fyear=filing_year−1)`, fallback to `sic`.
 3. `sic`: Compustat most-recent header SIC (no fallback).
 
-We tested all three; see `replication_results.md` for the comparison table.
+I tested all three; see `replication_results.md` for the comparison table.
 
 ---
 
