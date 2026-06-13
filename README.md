@@ -37,7 +37,7 @@ Two weighting schemes:
 
 Columns (2) and (4) report two weightings of the LM negative-word list: (a) **Fin-Neg** is the proportional measure: the number of words in a filing that appear in the negative-word list, divided by the filing’s total word count; (b) **Fin-Neg tf-idf** reweights those same words using tf-idf, as defined below (Eq. 1 in the paper):
 
-$$w_{i,j}=\frac{1+\log(tf_{i,j})}{1+\log(a_i)}\,\log\frac{N}{df_j},\qquad tf_{i,j}\ge 1,$$
+$$w_{i,j}=\frac{1+\log(tf_{i,j})}{1+\log(a_i)}\log\frac{N}{df_j},\qquad tf_{i,j}\ge 1,$$
 
 where $w_{i,j}$ denotes the weight of negative word $j$ in filing $i$; $tf_{i,j}$ is the count of word $j$ in filing $i$; $a_i$ is the filing’s total word count; $N$ is the number of 10-Ks in the corpus; and $df_j$ is the number of 10-Ks containing word $j$. The document-level Fin-Neg tf-idf score is the sum of the weights of all negative words:
 $$Score_i=\sum_j w_{i,j}$$. 
