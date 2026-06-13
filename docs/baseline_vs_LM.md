@@ -1,6 +1,6 @@
 # Baseline Replication vs Loughran & McDonald (2011)
 
-Side-by-side comparison of my **current baseline configuration** against the published Tables I, II, IV, V from LM (2011) *Journal of Finance* 66(1).
+Side-by-side comparison of my **current baseline configuration** against the published Tables I, II, IV, V from LM (2011).
 
 **Baseline configuration:**
 - **Sample**: 10-K and 10-K405 filings 1994-2008, deduped on accession
