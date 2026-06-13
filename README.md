@@ -38,9 +38,9 @@ Columns (2) and (4) report two weightings of LM's negative-word list. Fin-Neg is
 $$w_{i,j}=\frac{1+\log(tf_{i,j})}{1+\log(a_i)}\,\log\frac{N}{df_j},\qquad tf_{i,j}\ge 1,$$
 
 where $w_{i,j}$ denotes the weight of negative word $j$ in filing $i$, $tf_{i,j}$ is the count of word $j$ in filing $i$, $a_i$ the filing's total word count, $N$ the number of 10-Ks in the corpus, and $df_j$ the number of 10-Ks containing word $j$. The Fin-Neg tf-idf is the sum over the negative list:
-$$\text{Fin-Neg tf-idf}_i=\sum_j w_{i,j}$$
+$\text{Fin-Neg tf-idf}_i=\Sum_j w_{i,j}$
 
- Intuition: the inverse-document-frequency term $\log(N/df_j)$ makes a negative word that is rare across filings count for more than a ubiquitous one; idf is computed over the full corpus. A negative word counts for more the more often it appears in the filing, but less the more common it is across the whole 10-K corpus (its inverse document frequency), so distinctive negative words drive the score rather than boilerplate.
+Intuition: the inverse-document-frequency term $\log(N/df_j)$ makes a negative word that is rare across filings count for more than a ubiquitous one; idf is computed over the full corpus. A negative word counts for more the more often it appears in the filing, but less the more common it is across the whole 10-K corpus (its inverse document frequency), so distinctive negative words drive the score rather than boilerplate.
 
 All sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level, and R² values are within 0.2 percentage points of LM across all four regressions. The MD&A t-statistics in Table V are larger in absolute value than LM's. Several factors plausibly contribute: ~14 years of CRSP/Compustat restatements, which may give cleaner accounting-based variables; WRDS' CIK ↔ GVKEY ↔ PERMNO link-table backfills accumulated since 2011 (~600 extra unique permnos relative to LM); and minor differences in text-parsing rules between this implementation and LM's unpublished production code. These differences likely raise the statistical power of the Table V tests, lending further empirical support to LM's underlying claim that discretionary managerial tone in MD&A predicts filing-period returns.
 
