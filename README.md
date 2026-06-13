@@ -2,7 +2,7 @@
 
 A from-scratch, end-to-end replication of:
 
-> **Loughran, T., & McDonald, B. (2011).** *When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks.* **Journal of Finance** 66(1), 35–65.
+> Loughran, Tim, and Bill McDonald, 2011. “When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks”, Journal of Finance 66(1): 35–65.
 
 Tables I, II, IV, and V are reproduced — including the Fama-MacBeth regressions for their main results.
 
@@ -256,7 +256,7 @@ Full methodology + the rationale for each choice: [`docs/cleaning_process.md`](d
 
 ## References
 
-- **Paper**: Loughran, T., & McDonald, B. (2011). *When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks.* **Journal of Finance** 66(1), 35–65. DOI: [10.1111/j.1540-6261.2010.01625.x](https://doi.org/10.1111/j.1540-6261.2010.01625.x)
+- **Paper**: Loughran, Tim, and Bill McDonald, 2011. “When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks”, Journal of Finance 66(1): 35–65. DOI: [10.1111/j.1540-6261.2010.01625.x](https://doi.org/10.1111/j.1540-6261.2010.01625.x)
 - **SRAF data + dictionary**: <https://sraf.nd.edu/sec-edgar-data/>
 - **Loughran-McDonald Master Dictionary**: <https://sraf.nd.edu/loughranmcdonald-master-dictionary/>
 - **Fama-French data library**: <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>
