@@ -12,7 +12,7 @@ Tables I, II, IV, and V are reproduced — including the Fama-MacBeth regression
 
 Before LM (2011), textual analysis in finance imported general-purpose sentiment dictionaries (e.g. Harvard's *General Inquirer*, specifically the IV-4 Psychosocial Dictionary) and counted words. The problem: those dictionaries flag words like *liability*, *vice*, *cost*, *expense*, *tax* as **negative**. In 10-K filings these are mostly accounting terms with no negative connotation, so the resulting "negativity" score is noise.
 
-LM (2011) built a **domain-specific Sentiment Dictionary** by hand-tagging 80,000+ words from 10-Ks and showed that this finance-tuned dictionary's negative-tone score:
+LM (2011) built a **domain-specific Sentiment Dictionary** by hand-tagging 80,000+ words from 10-Ks and showed that this finance-tuned dictionary's negative-tone score (hereinafter referred to as **Fin-Neg**):
 
 - Is negatively associated with filing-period (four-day window) excess returns.
 - The result is statistically significant at the 1 % level, outperforming a Harvard-dictionary-based "noise" measure that even has the *wrong* sign.
@@ -32,6 +32,8 @@ The paper became foundational for empirical finance NLP — the dictionary is do
 | **Table V col(2) Fin-Neg MD&A t-stat** | **−3.47** | −0.68 |
 | **Table V col(4) Fin-Neg tf-idf MD&A t-stat** | **−3.39** | −1.96 |
 | **R²** | 2.35 – 2.58 % | 2.45 – 2.76 % |
+
+Columns (2) and (4) report two weightings of LM's negative-word list. Fin-Neg is the proportional measure — the count of the filing's words that appear on the negative-word list, divided by its total word count. **Fin-Neg tf-idf** re-weights those same words by tf-idf: a negative word counts for more the more often it appears in the filing, but less the more common it is across the whole 10-K corpus (its inverse document frequency), so distinctive negative words drive the score rather than boilerplate (LM Eq. 3).
 
 All sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level, and R² values are within 0.2 percentage points of LM across all four regressions. The MD&A t-statistics in Table V are larger in absolute value than LM's. Several factors plausibly contribute: ~14 years of CRSP/Compustat restatements, which may give cleaner accounting-based variables; WRDS' CIK ↔ GVKEY ↔ PERMNO link-table backfills accumulated since 2011 (~600 extra unique permnos relative to LM); and minor differences in text-parsing rules between this implementation and LM's unpublished production code. These differences likely raise the statistical power of the Table V tests, lending further empirical support to LM's underlying claim that discretionary managerial tone in MD&A predicts filing-period returns.
 
