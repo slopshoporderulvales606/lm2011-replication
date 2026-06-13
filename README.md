@@ -35,7 +35,7 @@ The paper became foundational for empirical finance NLP — the dictionary is do
 
 Columns (2) and (4) report two weightings of LM's negative-word list. Fin-Neg is the proportional measure — the count of the filing's words that appear on the negative-word list, divided by its total word count. **Fin-Neg tf-idf** re-weights those same words by tf-idf, given by the formula below (Eq. 3 in the paper): 
 
-$$w_{i,j}=\frac{1+\log tf_{i,j}}{1+\log a_i}\,\log\frac{N}{df_j},\qquad tf_{i,j}\ge 1,$$
+$$w_{i,j}=\frac{1+\log \(tf_{i,j}\)}{1+\log a_i}\,\log\frac{N}{df_j},\qquad tf_{i,j}\ge 1,$$
 
 where $w_{i,j}$ denotes the weight of negative word $j$ in filing $i$, $tf_{i,j}$ is the count of word $j$ in filing $i$, $a_i$ the filing's total word count, $N$ the number of 10-Ks in the corpus, and $df_j$ the number of 10-Ks containing word $j$. The Fin-Neg tf-idf is the sum over the negative list, $\text{Fin-Neg}^{\text{tf-idf}}_i=\sum_{j} w_{i,j}$.
 
