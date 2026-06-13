@@ -49,6 +49,8 @@ Comments on the replication results:
 
 2. My MD&A t-statistics in Table V are larger in absolute value than LM's. Several factors plausibly contribute: ~14 years of CRSP/Compustat restatements, which may give cleaner accounting-based variables; WRDS' CIK ↔ GVKEY ↔ PERMNO link-table backfills accumulated since 2011 (~600 extra unique permnos relative to LM); and minor differences in text-parsing rules between this implementation and LM's unpublished production code. These differences likely raise the statistical power of the Table V tests, lending further empirical support to LM's underlying claim that discretionary managerial tone in MD&A predicts filing-period returns.
 
+3. I also analyzed positive words and found they do not show a reliable relation to returns, consistent with LM's finding, so I do not report the results here.
+
 Full side-by-side: [`docs/baseline_vs_LM.md`](docs/baseline_vs_LM.md).
 
 ---
