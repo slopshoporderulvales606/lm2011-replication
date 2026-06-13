@@ -33,14 +33,14 @@ The paper became foundational for empirical finance NLP — the dictionary is do
 | **Table V col(4) Fin-Neg tf-idf MD&A t-stat** | **−3.39** | −1.96 |
 | **R²** | 2.35 – 2.58 % | 2.45 – 2.76 % |
 
-Columns (2) and (4) report two weightings of LM's negative-word list. Fin-Neg is the proportional measure — the count of the filing's words that appear on the negative-word list, divided by its total word count. **Fin-Neg tf-idf** re-weights those same words by tf-idf, given by the formula below (Eq. 1 in the paper): 
+Columns (2) and (4) report two weightings of the LM negative-word list. Fin-Neg is the proportional measure: the number of words in a filing that appear in the negative-word list, divided by the filing’s total word count. **Fin-Neg tf-idf** reweights those same words using tf-idf, as defined below (Eq. 1 in the paper):
 
 $$w_{i,j}=\frac{1+\log(tf_{i,j})}{1+\log(a_i)}\,\log\frac{N}{df_j},\qquad tf_{i,j}\ge 1,$$
 
-where $w_{i,j}$ denotes the weight of negative word $j$ in filing $i$, $tf_{i,j}$ is the count of word $j$ in filing $i$, $a_i$ the filing's total word count, $N$ the number of 10-Ks in the corpus, and $df_j$ the number of 10-Ks containing word $j$. The Fin-Neg tf-idf score is the sum over the negative list:
+where $w_{i,j}$ denotes the weight of negative word $j$ in filing $i$; $tf_{i,j}$ is the count of word $j$ in filing $i$; $a_i$ is the filing’s total word count; $N$ is the number of 10-Ks in the corpus; and $df_j$ is the number of 10-Ks containing word $j$. The document-level Fin-Neg tf-idf score is the sum of the weights of all negative words:
 $$Score_i=\sum_j w_{i,j}$$. 
 
-Intuition: the inverse-document-frequency term $\log(N/df_j)$ makes a negative word that is rare across filings count for more than a ubiquitous one; idf is computed over the full corpus. A negative word counts for more the more often it appears in the filing, but less the more common it is across the whole 10-K corpus (its inverse document frequency), so distinctive negative words drive the score rather than boilerplate.
+Intuition: a negative word receives more weight when it appears more frequently in a given filing, but less weight when it is common across the full 10-K corpus through the inverse-document-frequency term. As a result, distinctive negative words drive the score more than boilerplate language.
 
 All sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level, and R² values are within 0.2 percentage points of LM across all four regressions. The MD&A t-statistics in Table V are larger in absolute value than LM's. Several factors plausibly contribute: ~14 years of CRSP/Compustat restatements, which may give cleaner accounting-based variables; WRDS' CIK ↔ GVKEY ↔ PERMNO link-table backfills accumulated since 2011 (~600 extra unique permnos relative to LM); and minor differences in text-parsing rules between this implementation and LM's unpublished production code. These differences likely raise the statistical power of the Table V tests, lending further empirical support to LM's underlying claim that discretionary managerial tone in MD&A predicts filing-period returns.
 
