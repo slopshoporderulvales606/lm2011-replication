@@ -42,7 +42,10 @@ $$Score_i=\sum_j w_{i,j}$$.
 
 Intuition: a negative word receives more weight when it appears more frequently in a given filing, but less weight when it is common across the full 10-K corpus through the inverse-document-frequency term. As a result, distinctive negative words drive the score more than boilerplate language.
 
-Comments on the replication results: all sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level, and R² values are within 0.2 percentage points of LM across all four regressions. The MD&A t-statistics in Table V are larger in absolute value than LM's. Several factors plausibly contribute: ~14 years of CRSP/Compustat restatements, which may give cleaner accounting-based variables; WRDS' CIK ↔ GVKEY ↔ PERMNO link-table backfills accumulated since 2011 (~600 extra unique permnos relative to LM); and minor differences in text-parsing rules between this implementation and LM's unpublished production code. These differences likely raise the statistical power of the Table V tests, lending further empirical support to LM's underlying claim that discretionary managerial tone in MD&A predicts filing-period returns.
+Comments on the replication results: 
+1. The main results of the paper can be closely replicated. All sentiment coefficients carry the correct (negative) sign and remain significant at the 1 % level, and R² values are within 0.2 percentage points of LM across all four regressions. 
+
+2. My MD&A t-statistics in Table V are larger in absolute value than LM's. Several factors plausibly contribute: ~14 years of CRSP/Compustat restatements, which may give cleaner accounting-based variables; WRDS' CIK ↔ GVKEY ↔ PERMNO link-table backfills accumulated since 2011 (~600 extra unique permnos relative to LM); and minor differences in text-parsing rules between this implementation and LM's unpublished production code. These differences likely raise the statistical power of the Table V tests, lending further empirical support to LM's underlying claim that discretionary managerial tone in MD&A predicts filing-period returns.
 
 Full side-by-side: [`docs/baseline_vs_LM.md`](docs/baseline_vs_LM.md).
 
