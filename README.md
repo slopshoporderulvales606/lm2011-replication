@@ -1,10 +1,10 @@
-# Loughran and McDonald (2011) Replication — SEC 10-K Sentiment & Stock Returns
+# Loughran and McDonald (2011) Replication 
 
 A from-scratch, end-to-end replication of:
 
 > Loughran, Tim, and Bill McDonald, 2011. “When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks”, *Journal of Finance* 66(1): 35–65.
 
-Tables I, II, IV, and V are reproduced — including the Fama-MacBeth regressions for their main results.
+The main results in Tables I, II, IV, and V are reproduced, covering the Fama-MacBeth regressions on the relation between SEC 10-K sentiment and stock returns.
 
 ---
 
