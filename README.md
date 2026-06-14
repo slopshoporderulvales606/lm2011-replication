@@ -1,4 +1,4 @@
-# Loughran & McDonald (2011) Replication — SEC 10-K Sentiment & Stock Returns
+# Loughran and McDonald (2011) Replication — SEC 10-K Sentiment & Stock Returns
 
 A from-scratch, end-to-end replication of:
 
